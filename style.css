@@ -213,6 +213,10 @@ input[type="submit"] {
 	font-size: 20px;
 }
 
+/* TO DO: resizing images, click to enlarge, titles */
+
+/* SOURCE: https://learn.cloudcannon.com/jekyll/photo-gallery/ */
+
 .photo-gallery, .photo-gallery li {
 	list-style: none;
 	padding: 0;
@@ -226,6 +230,8 @@ input[type="submit"] {
 .photo-gallery li img {
 	width: 100%;
 }
+
+/* WHAT I USE, SOURCE: https://css-tricks.com/seamless-responsive-photo-grid/ */
 
 .photos {
   /* Prevent vertical gaps */
