@@ -16,6 +16,9 @@ author :
   twitter : shiraamitchell
   feedburner : nil
 
+collections:
+  photo_gallery:
+    
 # NOTE: If replacing this next line with your own URL, you likely want "https://" not "http://"
 production_url : https://shiraamitchell.github.io/fairness
 
