@@ -13,3 +13,5 @@ tagline: Statistician, NYC Mayor's Office of Data Analytics
 [twitter](https://twitter.com/shiraamitchell)
 
 [mirror mirror](https://shiraamitchell.github.io/fairness/)
+
+[rpdr](/rpdr)
