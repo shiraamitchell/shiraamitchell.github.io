@@ -331,7 +331,7 @@ knitr::dep_prev()</code></pre>
 <div id="wrangle" class="section level2">
 <h2>Wrangle</h2>
 <p>We begin by data wrangling, getting data into R in a useful form. We import and join datasets. We standardize continuous variables (see <a href="http://www.stat.columbia.edu/~gelman/research/published/standardizing7.pdf">this paper</a>).</p>
-<pre class="r"><code>rpdr_data &lt;- &quot;RPDR Data Tables&quot; %&gt;% gs_title
+<pre class="r"><code>rpdr_data &lt;- &quot;1Sotvl3o7J_ckKUg5sRiZTqNQn3hPqhepBSeOpMTK15Q&quot; %&gt;% gs_key
 
 all_episodes &lt;- rpdr_data %&gt;% gs_read(&quot;all_episodes&quot;) %&gt;%
   arrange(season_number, episode_number) %&gt;% rowid_to_column(&quot;t&quot;)
