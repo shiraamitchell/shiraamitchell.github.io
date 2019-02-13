@@ -308,7 +308,7 @@ div.tocify {
 <ol style="list-style-type: decimal">
 <li>all_episodes: episode-level data, past 10 seasons</li>
 <li>all_contestants: contestant-level data, past 10 seasons, current season (season 11)</li>
-<li>all_contestant_episode_rankings: episode-contestant-level data, past 10 seasons</li>
+<li>all_rankings: episode-contestant-level data, past 10 seasons</li>
 <li>current_follower_counts: contestant-time-level data, current season (season 11)</li>
 <li>past_twitter: contestant-time-level data, seasons 4 through 10 (with some gaps)</li>
 </ol>
@@ -336,9 +336,9 @@ knitr::dep_prev()</code></pre>
 all_episodes &lt;- rpdr_data %&gt;% gs_read(&quot;all_episodes&quot;) %&gt;%
   arrange(season_number, episode_number) %&gt;% rowid_to_column(&quot;t&quot;)
 all_contestants &lt;- rpdr_data %&gt;% gs_read(&quot;all_contestants&quot;)
-all_contestant_episode_rankings &lt;- rpdr_data %&gt;% gs_read(&quot;all_contestant_episode_rankings&quot;)
+all_rankings &lt;- rpdr_data %&gt;% gs_read(&quot;all_rankings&quot;)
 
-wrangled &lt;- all_contestant_episode_rankings %&gt;%
+wrangled &lt;- all_rankings %&gt;%
   left_join(all_contestants, by = c(&quot;season_number&quot;,&quot;contestant_id&quot;)) %&gt;%
   left_join(all_episodes, by=c(&quot;season_number&quot;, &quot;episode_number&quot;)) %&gt;%
   mutate(placement = case_when(is.element(episode_placement,c('WIN','Winner')) ~ &quot;win&quot;,
