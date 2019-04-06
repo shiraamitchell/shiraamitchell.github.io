@@ -311,8 +311,8 @@ div.tocify {
 <li>all_contestants: contestant-level data, past 10 seasons, current season (season 11)</li>
 <li>all_rankings: episode-contestant-level data, past 10 seasons</li>
 <li>all_social_media: contestant-time-level data, seasons 4 through 10 (with some gaps), current season (season 11)</li>
-<li>survey_votes: vote-level data from the <a href="https://www.allourideas.org/rpdr-s11-w6">survey</a> (you can participate!), current season (season 11)</li>
-<li>survey_contestants: contestant-level data from the <a href="https://www.allourideas.org/rpdr-s11-w6">survey</a>, current season (season 11)</li>
+<li>survey_votes: vote-level data from the <a href="https://www.allourideas.org/rpdr-s11-w7">survey</a> (you can participate!), current season (season 11)</li>
+<li>survey_contestants: contestant-level data from the <a href="https://www.allourideas.org/rpdr-s11-w7">survey</a>, current season (season 11)</li>
 </ol>
 <p>We will be updating datasets throughout the current season (season 11).</p>
 <p>Models cannot use non-public information. They can, however, create their own datasets based on publicly-available information.</p>
@@ -345,12 +345,12 @@ all_rankings &lt;- rpdr_data %&gt;% gs_read(&quot;all_rankings&quot;)
 #--------------------- add next episode to predict ---------------------#
 all_episodes_next &lt;- add_row(all_episodes, season_number = 11, episode_number = 6,
                              episode_airdate = NA, episode_title = NA,
-                             episode_type = &quot;Competition&quot;, episode_maxi_challenge_type = NA) %&gt;% 
+                             episode_type = &quot;Competition&quot;, episode_maxi_challenge_type = NA) %&gt;%
   arrange(season_number, episode_number) %&gt;% rowid_to_column(&quot;t&quot;)
 season_11_contestants &lt;- (all_contestants %&gt;% filter(season_number == 11))$contestant_id
 eliminated_contestants &lt;- (all_rankings %&gt;% filter(is.element(episode_placement,c('ELIM','Eliminated'))))$contestant_id
 next_contestants &lt;- setdiff(season_11_contestants, eliminated_contestants)
-all_rankings_next &lt;- add_row(all_rankings, season_number = 11, episode_number = 6, 
+all_rankings_next &lt;- add_row(all_rankings, season_number = 11, episode_number = 6,
                              contestant_id = next_contestants, episode_placement = NA)
 #-----------------------------------------------------------------------#
 
@@ -360,8 +360,8 @@ wrangled &lt;- all_rankings_next %&gt;%
   mutate(placement = case_when(is.element(episode_placement,c('WIN','Winner')) ~ 1,
                       is.element(episode_placement,c('ELIM','Eliminated'))  ~ -1,
                       TRUE ~ 0)) %&gt;%
-  group_by(t) %&gt;% mutate(num_winners = sum(placement == 1), 
-                         num_losers = sum(placement == -1)) %&gt;% 
+  group_by(t) %&gt;% mutate(num_winners = sum(placement == 1),
+                         num_losers = sum(placement == -1)) %&gt;%
   arrange(desc(placement), .by_group = TRUE) %&gt;% ungroup() %&gt;% # within episode: winner first, loser last
   filter(is.element(episode_type,c('Competition','Finale'))) %&gt;%
   group_by(contestant_id) %&gt;% mutate(past_wins = cumsum(placement == 1) - (placement == 1)) %&gt;%
@@ -735,17 +735,17 @@ data_so_far &lt;- wrangled %&gt;% filter(t &lt; next_t)
 fit &lt;- fit_model(df = data_so_far)</code></pre>
 <pre class="r"><code>print(fit, pars = c('beta_age','beta_past_wins','sigma'))</code></pre>
 <pre><code>## Inference for Stan model: 99f86f9a801588e1014aedc5c86c67f1.
-## 4 chains, each with iter=2000; warmup=1000; thin=1; 
+## 4 chains, each with iter=2000; warmup=1000; thin=1;
 ## post-warmup draws per chain=1000, total post-warmup draws=4000.
-## 
+##
 ##                 mean se_mean   sd  2.5%   25%   50%  75% 97.5% n_eff Rhat
 ## beta_age       -0.04    0.00 0.23 -0.49 -0.18 -0.04 0.10  0.42  2942 1.00
 ## beta_past_wins  0.25    0.02 0.40 -0.65  0.01  0.30 0.54  0.92   405 1.00
 ## sigma           0.67    0.02 0.36  0.05  0.40  0.65 0.91  1.43   256 1.01
-## 
+##
 ## Samples were drawn using NUTS(diag_e) at Sat Mar 30 11:44:05 2019.
 ## For each parameter, n_eff is a crude measure of effective sample size,
-## and Rhat is the potential scale reduction factor on split chains (at 
+## and Rhat is the potential scale reduction factor on split chains (at
 ## convergence, Rhat=1).</code></pre>
 <pre class="r"><code>stan_plot(fit, pars = c('beta_age','beta_past_wins','sigma')) + geom_vline(xintercept=0, size = 2)</code></pre>
 <pre><code>## ci_level: 0.8 (80% intervals)</code></pre>
@@ -779,7 +779,7 @@ for (t_current in (L+1):(next_t - 1)) {
   pred_winner &lt;- Mode(winner_s)
   loser_s &lt;- apply(eta_s, MARGIN = 1, FUN = which.min)
   pred_loser &lt;- Mode(loser_s)
-  correct &lt;- c(correct, (newdata$placement[pred_winner] == 1) &amp; 
+  correct &lt;- c(correct, (newdata$placement[pred_winner] == 1) &amp;
                  (newdata$placement[pred_loser] == -1))
   random_correct = c(random_correct, (1/nrow(newdata))*(1/(nrow(newdata)-1)))
 }</code></pre>
