@@ -1,5 +1,5 @@
 ---
-image_path: /images/cathy.jpg
-title: Dogs (2013)
+image_path: /images/Cathy.jpg
+title: Cathy (2019)
 weight: 25
 ---
