@@ -4,10 +4,15 @@ layout: art_layout
 {% assign sorted_gallery = site.photo_gallery | sort: 'weight' %}
 <ul class="photos">
   {% for image in sorted_gallery %}
-    <li>
-      <a href="{{ image.link }}">
-        <img src="{{ image.image_path }}" alt="{{ image.title }}">
-      </a>
-    </li>
+  <li>
+    <a href="#{{image.title}}">
+      <img src="{{ image.image_path }}" alt="{{ image.title }}">
+      <a href="#" class="close"></a>
+    </a>
+    <!-- lightbox container hidden with CSS -->
+    <a href="#_" class="lightbox" id="{{image.title}}">
+      <img src="{{image.image_path}}">
+    </a>
+  </li>
   {% endfor %}
 </ul>
