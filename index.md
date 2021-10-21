@@ -1,15 +1,17 @@
 ---
 layout: page
 title: Shira Mitchell
-tagline: Statistician
+tagline: Statistician at Blue Rose Research
 ---
 
-[resume]({{ shiraamitchell.github.io }}/assets/resume_shira_mitchell.pdf)
-
-[some art](/photo-gallery)
+[Blue Rose Research](https://blueroseresearch.org/)
 
 [twitter](https://twitter.com/shiraamitchell)
+
+[resume]({{ shiraamitchell.github.io }}/assets/resume_shira_mitchell.pdf)
 
 [mirror mirror](https://shiraamitchell.github.io/fairness/)
 
 [rpdr](/rpdr)
+
+[some art](/photo-gallery)
