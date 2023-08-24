@@ -6,6 +6,8 @@ tagline: Statistician at Blue Rose Research
 
 [Blue Rose Research](https://blueroseresearch.org/)
 
+[NM-AIST statistics](/nmaist_statistics)
+
 [twitter](https://twitter.com/shiraamitchell)
 
 [resume]({{ shiraamitchell.github.io }}/assets/resume_shira_mitchell.pdf)
