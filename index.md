@@ -6,7 +6,7 @@ tagline: Statistician at Blue Rose Research
 
 [Blue Rose Research](https://blueroseresearch.org/)
 
-[NM-AIST statistics 2024](/nmaist_statistics)
+[NM-AIST statistics 2024](/nmaist_statistics_2024)
 
 [NM-AIST statistics 2023](/nmaist_statistics_2023)
 
